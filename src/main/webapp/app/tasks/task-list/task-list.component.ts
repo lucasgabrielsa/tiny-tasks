@@ -22,6 +22,10 @@ export class TaskListComponent {
 
   @Output() download: EventEmitter<TaskImageResponse> = new EventEmitter();
 
+  @Output() taskDone: EventEmitter<Task> = new EventEmitter();
+
+  checked: boolean = true;
+
   constructor(@Inject('TaskService') private taskService: TaskService, @Inject(BASE_URL) private baseUrl: string) { }
 
   delete(task: Task): void {
@@ -57,4 +61,12 @@ export class TaskListComponent {
       return imagesExtensions.indexOf(ext) > -1;
     }
   }
+
+
+  setTaskDone(task: Task) {
+    this.taskService.setTaskAsDone(task.id).subscribe((result) => {
+      this.taskDone.emit(result);
+    });
+  }
+
 }

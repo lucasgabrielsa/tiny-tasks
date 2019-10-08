@@ -4,6 +4,16 @@
     <img *ngIf="isImageFile(task.file)" matListAvatar [src]="getPreviewImage(task)">
     <h4 mat-line>{{task.name}}</h4>
     <p mat-line>ID: {{task.id}}</p>
+    <div *ngIf="task.done; else elseBlock">
+      <button mat-icon-button color="primary">
+        <mat-icon aaria-label="Task Done">done</mat-icon>
+      </button>
+    </div>
+    <ng-template #elseBlock>
+      <button mat-icon-button color="primary" [disabled]="true" matTooltip="Set the task as done">
+        <mat-icon aria-label="Set task as done" (click)="setTaskDone(task)">done</mat-icon>
+      </button>
+    </ng-template>
     <button mat-icon-button color="primary" [disabled]="task.file === null">
       <mat-icon aria-label="Download Image" (click)="downloadFile(task)">cloud_download</mat-icon>
     </button>

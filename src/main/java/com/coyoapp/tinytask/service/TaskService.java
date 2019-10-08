@@ -5,6 +5,8 @@ import com.coyoapp.tinytask.dto.TaskRequest;
 import com.coyoapp.tinytask.dto.TaskResponse;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,4 +24,7 @@ public interface TaskService {
   
   Resource loadTaskFile(String fileName);
 
+  TaskResponse setTaskAsDone(String taskId);
+  
 }
+

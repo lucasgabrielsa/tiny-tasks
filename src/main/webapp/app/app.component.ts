@@ -45,4 +45,8 @@ export class AppComponent implements OnInit {
     });
     saveAs(blob, task.file);
   }
+
+  taskDone(task: Task): void {
+    this.tasks$ = this.taskService.getAll();
+  }
 }

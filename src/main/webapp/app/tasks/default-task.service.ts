@@ -39,4 +39,8 @@ export class DefaultTaskService implements TaskService {
       observe: 'response'
     });
   }
+
+  setTaskAsDone(id: string): Observable<Task> {
+    return this.http.put<Task>(this.baseUrl + '/tasks/done/' + id, {});
+  }
 }

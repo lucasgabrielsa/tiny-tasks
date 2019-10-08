@@ -39,4 +39,12 @@ export interface TaskService {
    * @returns a blob object with image `Blob`
    */
   downloadImage(id: String): Observable<HttpResponse<Blob>>;
+
+  /**
+   * Update a task to done.
+   *
+   * @param id of the task to be updated
+   * @returns an `Observable` holding the created task
+   */
+  setTaskAsDone(id: string): Observable<Task>;
 }

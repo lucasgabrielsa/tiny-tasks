@@ -58,7 +58,7 @@ public class DefaultTaskService implements TaskService {
 	@Transactional(readOnly = true)
 	public List<TaskResponse> getTasks() {
 		log.debug("getTasks()");
-		return taskRepository.findAll().stream().map(this::transformToResponse).collect(toList());
+		return taskRepository.findAllByOrderByDoneAsc().stream().map(this::transformToResponse).collect(toList());
 	}
 
 	private TaskResponse transformToResponse(Task task) {
@@ -120,6 +120,15 @@ public class DefaultTaskService implements TaskService {
 		} catch (MalformedURLException ex) {
 			throw new ImageTaskNotFoundException("File not found " + fileName, ex);
 		}
+	}
+	
+	@Override
+	@Transactional
+	public TaskResponse setTaskAsDone(String taskId) {
+		Task task = getTaskByid(taskId);
+		task.setDone(true);
+		taskRepository.save(task);
+		return transformToResponse(task);
 	}
 
 }

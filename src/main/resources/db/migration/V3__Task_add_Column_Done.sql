@@ -1,0 +1,1 @@
+alter table task add column done boolean default false;

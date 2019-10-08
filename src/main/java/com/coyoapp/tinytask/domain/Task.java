@@ -29,6 +29,8 @@ public class Task {
   private String name;
   
   private String file;
+  
+  private Boolean done;
 
   @CreatedDate
   private Instant created;

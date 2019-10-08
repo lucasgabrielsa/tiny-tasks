@@ -16,4 +16,6 @@ public class TaskResponse {
   private String name;
   
   private String file;
+  
+  private Boolean done;
 }

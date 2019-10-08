@@ -15,6 +15,6 @@ public class TaskRequest {
   @NotEmpty
   private String name;
   
-  private String file;
+  private String file;  
 
 }
